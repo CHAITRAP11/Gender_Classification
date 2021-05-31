@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block bodyblock %}
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+</head>
+<body>
+<div class="container my-3">
+<form action="{{url_for('rating') }}" method="POST">
+<div class="container">
+<div class="mb-3">
+  <label for="name" class="form-label">Name<span>*</span></label>
+  <input type="name" class="form-control" id="name" name="name" required="true" placeholder="Enter your name">
+</div>
+<hr>
+<div class="md-3">
+    <label for="rating" class="form-label">Rate:<span>*</span></label>
+    <div class="rateyo" id= "rating"
+         data-rateyo-rating="0"
+         data-rateyo-num-stars="5"
+         data-rateyo-score="3">
+     </div>
+         <span class='result'>0</span>
+        <input type="hidden" name="rating">
+</div>
+<hr>
+<div class="mb-3">
+  <textarea class="form-control" id="text" rows="3" name="text" required="true" placeholder="Describe your experience"></textarea>
+</div>
+<div class="md-3">
+    <button type="submit" class="btn btn-dark">Submit</button>
+</div>
+
+</div>
+</form>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+
+<script>
+
+
+    $(function () {
+        $(".rateyo").rateYo().on("rateyo.change", function (e, data) {
+            var rating = data.rating;
+            $(this).parent().find('.score').text('score :'+ $(this).attr('data-rateyo-score'));
+            $(this).parent().find('.result').text('rating :'+ rating);
+            $(this).parent().find('input[name=rating]').val(rating); //add rating value to input field
+        });
+    });
+
+</script>
+</body>
+
+</html>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block bodyblock %}
+<form action="{{url_for('cform') }}" method="POST">
+<div class="container">
+<div class="mb-3">
+  <label for="name" class="form-label">Full Name<span>*</span></label>
+  <input type="name" class="form-control" id="name" name="name" required="true">
+</div>
+<div class="mb-3">
+  <label for="email" class="form-label">Email address<span>*</span></label>
+  <input type="email" class="form-control" id="email" name="email" required="true">
+</div>
+<div class="mb-3">
+  <label for="text" class="form-label">Example textarea<span>*</span></label>
+  <textarea class="form-control" id="text" rows="3" name="text" required="true"></textarea>
+</div>
+<div class="md-3">
+	<button type="submit" class="btn btn-dark">Submit</button>
+</div>
+</div>
+</form>
+{% endblock %}
