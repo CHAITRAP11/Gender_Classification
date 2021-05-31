@@ -11,16 +11,20 @@
 		<form action="#" method="POST" enctype="multipart/form-data">
 			<label for="upload">Upload to predict</label>
 			<input type="file" id="upload"
-			name="image" required="true">
-			<input type="submit" value="upload & predict">
-			
+			name="image" required="true" class="btn btn-dark">
+			<input id="predict" type="submit" value="Predict" class="btn btn-dark">	
 		</form>
 	</div>
 
+	<style type="text/css">
+		#predict{
+			margin-left:40px;
+		}
+	</style>
 	{% if fileupload %}
 
-		<div class="container">
-			<p> {{ img_name }} </p>
+		<div class="container my-3">
+			<!-- <p> {{ img_name }} </p> -->
 			<div class="row">
 				<div class="col-md-6">
 					<img src="{{ url_for('static',filename='uploads/')}}{{img_name}}" alt="pgkl" width="{{w}}" height="300">
